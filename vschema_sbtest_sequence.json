@@ -1,0 +1,14 @@
+{
+  "tables": {
+    "sbtest1_seq": {
+      "type": "sequence"
+    },
+    "sbtest2_seq": {
+      "type": "sequence"
+    },
+    "sbtest1": {},
+    "sbtest2": {},
+    "sbtest3": {},
+    "sbtest4": {}
+  }
+}

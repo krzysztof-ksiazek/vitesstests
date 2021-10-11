@@ -1,0 +1,34 @@
+{
+	"sharded": true,
+	"vindexes": {
+		"id1": {
+			"type": "reverse_bits"
+		},
+		"id2": {
+			"type": "reverse_bits"
+		}
+	},
+	"tables": {
+		"sbtest1": {
+			"column_vindexes": [{
+				"column": "id",
+				"name": "id1"
+			}],
+			"auto_increment": {
+				"column": "id",
+				"sequence": "sbtest1_seq"
+			}
+		},
+
+		"sbtest2": {
+		       	"column_vindexes": [{
+                                "column": "id",
+                                "name": "id2"
+			}],
+			"auto_increment": {
+				"column": "id",
+				"sequence": "sbtest2_seq"
+			}
+		}
+	}
+}
