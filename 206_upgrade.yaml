@@ -8,12 +8,12 @@ metadata:
   name: vitesstpcc
 spec:
   images:
-    vtctld: vitess/lite:v12.0.0
-    vtgate: vitess/lite:v12.0.0
-    vttablet: vitess/lite:v12.0.0
-    vtbackup: vitess/lite:v12.0.0
+    vtctld: vitess/lite:v12.0.0-mysql80
+    vtgate: vitess/lite:v12.0.0-mysql80
+    vttablet: vitess/lite:v12.0.0-mysql80
+    vtbackup: vitess/lite:v12.0.0-mysql80
     mysqld:
-      mysql80Compatible: vitess/lite:mysql80
+      mysql80Compatible: vitess/lite:v12.0.0-mysql80
     mysqldExporter: prom/mysqld-exporter:v0.11.0
   cells:
   - name: zone1
@@ -59,7 +59,7 @@ spec:
           tabletPools:
           - cell: zone1
             type: replica
-            replicas: 4
+            replicas: 1
             vttablet:
               extraFlags:
                 db_charset: utf8mb4
@@ -68,6 +68,7 @@ spec:
                 xtrabackup_root_path: /usr/bin
                 xtrabackup_user: root
                 xtrabackup_stripes: "8"
+                xtrabackup_stream_mode: "xbstream"
                 restore_from_backup: 'true'
                 file_backup_storage_root: /mnt/backup
               resources:

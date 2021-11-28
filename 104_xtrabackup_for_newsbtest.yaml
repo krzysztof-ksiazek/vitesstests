@@ -71,9 +71,15 @@ spec:
                 requests:
                   cpu: 1
                   memory: 2Gi
+                limits:
+                  cpu: 1
+                  memory: 2Gi
             mysqld:
               resources:
                 requests:
+                  cpu: 1
+                  memory: 2Gi
+                limits:
                   cpu: 1
                   memory: 2Gi
             dataVolumeClaimTemplate:
@@ -116,16 +122,23 @@ spec:
                 backup_engine_implementation: xtrabackup
                 xtrabackup_root_path: /usr/bin
                 xtrabackup_user: root
-                xtrabackup_stripes: 8
+                xtrabackup_stripes: '8'
+                xtrabackup_stream_mode: "xbstream"
                 restore_from_backup: 'true'
                 file_backup_storage_root: /mnt/backup
               resources:
                 requests:
                   cpu: 1
                   memory: 2Gi
+                limits:
+                  cpu: 1
+                  memory: 2Gi
             mysqld:
               resources:
                 requests:
+                  cpu: 1
+                  memory: 2Gi
+                limits:
                   cpu: 1
                   memory: 2Gi
             dataVolumeClaimTemplate:

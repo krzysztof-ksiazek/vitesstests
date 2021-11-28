@@ -5,15 +5,15 @@
 apiVersion: planetscale.com/v2
 kind: VitessCluster
 metadata:
-  name: example
+  name: vitesstpcc
 spec:
   images:
-    vtctld: vitess/lite:latest
-    vtgate: vitess/lite:latest
-    vttablet: vitess/lite:latest
-    vtbackup: vitess/lite:latest
+    vtctld: vitess/lite:v12.0.0-mysql80
+    vtgate: vitess/lite:v12.0.0-mysql80
+    vttablet: vitess/lite:v12.0.0-mysql80
+    vtbackup: vitess/lite:v12.0.0-mysql80
     mysqld:
-      mysql56Compatible: vitess/lite:latest
+      mysql80Compatible: vitess/lite:v12.0.0-mysql80
     mysqldExporter: prom/mysqld-exporter:v0.11.0
   cells:
   - name: zone1
@@ -43,9 +43,9 @@ spec:
         cpu: 100m
         memory: 128Mi
 
-  keyspaces:
 
-  - name: sbtest
+  keyspaces:
+  - name: items
     turndownPolicy: Immediate
     partitionings:
     - equal:
@@ -64,7 +64,11 @@ spec:
               extraFlags:
                 db_charset: utf8mb4
                 backup_storage_implementation: file
-                backup_engine_implementation: builtin
+                backup_engine_implementation: xtrabackup
+                xtrabackup_root_path: /usr/bin
+                xtrabackup_user: root
+                xtrabackup_stripes: "8"
+                xtrabackup_stream_mode: "xbstream"
                 restore_from_backup: 'true'
                 file_backup_storage_root: /mnt/backup
               resources:
@@ -75,6 +79,9 @@ spec:
                   cpu: 1
                   memory: 2Gi
             mysqld:
+              configOverrides: |
+                innodb_flush_log_at_trx_commit=2
+                innodb_buffer_pool_size=1024M
               resources:
                 requests:
                   cpu: 1
@@ -99,7 +106,6 @@ spec:
             extraVolumeMounts:
             - name: backupvol
               mountPath: /mnt
-
   - name: newsbtest
     turndownPolicy: Immediate
     partitionings:
@@ -114,7 +120,7 @@ spec:
           tabletPools:
           - cell: zone1
             type: replica
-            replicas: 2
+            replicas: 1
             vttablet:
               extraFlags:
                 db_charset: utf8mb4
@@ -122,7 +128,7 @@ spec:
                 backup_engine_implementation: xtrabackup
                 xtrabackup_root_path: /usr/bin
                 xtrabackup_user: root
-                xtrabackup_stripes: '8'
+                xtrabackup_stripes: "8"
                 xtrabackup_stream_mode: "xbstream"
                 restore_from_backup: 'true'
                 file_backup_storage_root: /mnt/backup
@@ -134,6 +140,9 @@ spec:
                   cpu: 1
                   memory: 2Gi
             mysqld:
+              configOverrides: |
+                innodb_flush_log_at_trx_commit=2
+                innodb_buffer_pool_size=512M
               resources:
                 requests:
                   cpu: 1
@@ -159,60 +168,6 @@ spec:
             - name: backupvol
               mountPath: /mnt
 
-    - equal:
-        parts: 3
-        shardTemplate:
-          databaseInitScriptSecret:
-            name: example-cluster-config
-            key: init_db.sql
-          replication:
-            enforceSemiSync: false
-          tabletPools:
-          - cell: zone1
-            type: replica
-            replicas: 2
-            vttablet:
-              extraFlags:
-                db_charset: utf8mb4
-                backup_storage_implementation: file
-                backup_engine_implementation: xtrabackup
-                xtrabackup_root_path: /usr/bin
-                xtrabackup_user: root
-                xtrabackup_stripes: '8'
-                restore_from_backup: 'true'
-                file_backup_storage_root: /mnt/backup
-              resources:
-                requests:
-                  cpu: 500m
-                  memory: 1Gi
-                limits:
-                  cpu: 1
-                  memory: 2Gi
-            mysqld:
-              resources:
-                requests:
-                  cpu: 500m
-                  memory: 1Gi
-                limits:
-                  cpu: 1
-                  memory: 2Gi
-            dataVolumeClaimTemplate:
-              accessModes: ["ReadWriteOnce"]
-              resources:
-                requests:
-                  storage: 100Gi
-            extraVolumes:
-            - name: backupvol
-              persistentVolumeClaim:
-                claimName: "backupvol"
-                accessModes: ["ReadWriteMany"]
-                resources:
-                  requests:
-                    storage: 100Gi
-                volumeName: backup
-            extraVolumeMounts:
-            - name: backupvol
-              mountPath: /mnt
 
   updateStrategy:
     type: Immediate
@@ -223,6 +178,11 @@ metadata:
   name: example-cluster-config
 type: Opaque
 stringData:
+  external_users.json: |
+    {
+      "vitess_admin": ["Vitesspass"]
+    }
+
   users.json: |
     {
       "user": [{
@@ -233,23 +193,6 @@ stringData:
       [{
         "UserData": "sbtest",
         "Password": "sbtest"
-      }]
-    }
-  usersnew.json: |
-    {
-      "user": [{
-        "UserData": "user",
-        "Password": ""
-      }],
-      "sbtest":
-      [{
-        "UserData": "sbtest",
-        "Password": "sbtest"
-      }],
-      "newsbtest":
-      [{
-        "UserData": "newsbtest",
-        "Password": "newsbtest"
       }]
     }
   init_db.sql: |

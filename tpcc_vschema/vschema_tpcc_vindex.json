@@ -1,0 +1,490 @@
+{
+  "sharded": true,
+  "vindexes": {
+    "w_id": {
+      "type": "reverse_bits"
+    }
+  },
+  "tables": {
+    "customer1": {
+      "column_vindexes": [{
+        "column": "c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "customer2": {
+      "column_vindexes": [{
+        "column": "c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "customer3": {
+      "column_vindexes": [{
+        "column": "c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "customer4": {
+      "column_vindexes": [{
+        "column": "c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "customer5": {
+      "column_vindexes": [{
+        "column": "c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "customer6": {
+      "column_vindexes": [{
+        "column": "c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "customer7": {
+      "column_vindexes": [{
+        "column": "c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "customer8": {
+      "column_vindexes": [{
+        "column": "c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "customer9": {
+      "column_vindexes": [{
+        "column": "c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "customer10": {
+      "column_vindexes": [{
+        "column": "c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "district1": {
+      "column_vindexes": [{
+        "column": "d_w_id",
+        "name": "w_id"
+      }]
+    },
+    "district2": {
+      "column_vindexes": [{
+        "column": "d_w_id",
+        "name": "w_id"
+      }]
+    },
+    "district3": {
+      "column_vindexes": [{
+        "column": "d_w_id",
+        "name": "w_id"
+      }]
+    },
+    "district4": {
+      "column_vindexes": [{
+        "column": "d_w_id",
+        "name": "w_id"
+      }]
+    },
+    "district5": {
+      "column_vindexes": [{
+        "column": "d_w_id",
+        "name": "w_id"
+      }]
+    },
+    "district6": {
+      "column_vindexes": [{
+        "column": "d_w_id",
+        "name": "w_id"
+      }]
+    },
+    "district7": {
+      "column_vindexes": [{
+        "column": "d_w_id",
+        "name": "w_id"
+      }]
+    },
+    "district8": {
+      "column_vindexes": [{
+        "column": "d_w_id",
+        "name": "w_id"
+      }]
+    },
+    "district9": {
+      "column_vindexes": [{
+        "column": "d_w_id",
+        "name": "w_id"
+      }]
+    },
+    "district10": {
+      "column_vindexes": [{
+        "column": "d_w_id",
+        "name": "w_id"
+      }]
+    },
+    "history1": {
+      "column_vindexes": [{
+        "column": "h_c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "history2": {
+      "column_vindexes": [{
+        "column": "h_c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "history3": {
+      "column_vindexes": [{
+        "column": "h_c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "history4": {
+      "column_vindexes": [{
+        "column": "h_c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "history5": {
+      "column_vindexes": [{
+        "column": "h_c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "history6": {
+      "column_vindexes": [{
+        "column": "h_c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "history7": {
+      "column_vindexes": [{
+        "column": "h_c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "history8": {
+      "column_vindexes": [{
+        "column": "h_c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "history9": {
+      "column_vindexes": [{
+        "column": "h_c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "history10": {
+      "column_vindexes": [{
+        "column": "h_c_w_id",
+        "name": "w_id"
+      }]
+    },
+    "new_orders1": {
+      "column_vindexes": [{
+        "column": "no_w_id",
+        "name": "w_id"
+      }]
+    },
+    "new_orders2": {
+      "column_vindexes": [{
+        "column": "no_w_id",
+        "name": "w_id"
+      }]
+    },
+    "new_orders3": {
+      "column_vindexes": [{
+        "column": "no_w_id",
+        "name": "w_id"
+      }]
+    },
+    "new_orders4": {
+      "column_vindexes": [{
+        "column": "no_w_id",
+        "name": "w_id"
+      }]
+    },
+    "new_orders5": {
+      "column_vindexes": [{
+        "column": "no_w_id",
+        "name": "w_id"
+      }]
+    },
+    "new_orders6": {
+      "column_vindexes": [{
+        "column": "no_w_id",
+        "name": "w_id"
+      }]
+    },
+    "new_orders7": {
+      "column_vindexes": [{
+        "column": "no_w_id",
+        "name": "w_id"
+      }]
+    },
+    "new_orders8": {
+      "column_vindexes": [{
+        "column": "no_w_id",
+        "name": "w_id"
+      }]
+    },
+    "new_orders9": {
+      "column_vindexes": [{
+        "column": "no_w_id",
+        "name": "w_id"
+      }]
+    },
+    "new_orders10": {
+      "column_vindexes": [{
+        "column": "no_w_id",
+        "name": "w_id"
+      }]
+    },
+    "order_line1": {
+      "column_vindexes": [{
+        "column": "ol_w_id",
+        "name": "w_id"
+      }]
+    },
+    "order_line2": {
+      "column_vindexes": [{
+        "column": "ol_w_id",
+        "name": "w_id"
+      }]
+    },
+    "order_line3": {
+      "column_vindexes": [{
+        "column": "ol_w_id",
+        "name": "w_id"
+      }]
+    },
+    "order_line4": {
+      "column_vindexes": [{
+        "column": "ol_w_id",
+        "name": "w_id"
+      }]
+    },
+    "order_line5": {
+      "column_vindexes": [{
+        "column": "ol_w_id",
+        "name": "w_id"
+      }]
+    },
+    "order_line6": {
+      "column_vindexes": [{
+        "column": "ol_w_id",
+        "name": "w_id"
+      }]
+    },
+    "order_line7": {
+      "column_vindexes": [{
+        "column": "ol_w_id",
+        "name": "w_id"
+      }]
+    },
+    "order_line8": {
+      "column_vindexes": [{
+        "column": "ol_w_id",
+        "name": "w_id"
+      }]
+    },
+    "order_line9": {
+      "column_vindexes": [{
+        "column": "ol_w_id",
+        "name": "w_id"
+      }]
+    },
+    "order_line10": {
+      "column_vindexes": [{
+        "column": "ol_w_id",
+        "name": "w_id"
+      }]
+    },
+    "orders1": {
+      "column_vindexes": [{
+        "column": "o_w_id",
+        "name": "w_id"
+      }]
+    },
+    "orders2": {
+      "column_vindexes": [{
+        "column": "o_w_id",
+        "name": "w_id"
+      }]
+    },
+    "orders3": {
+      "column_vindexes": [{
+        "column": "o_w_id",
+        "name": "w_id"
+      }]
+    },
+    "orders4": {
+      "column_vindexes": [{
+        "column": "o_w_id",
+        "name": "w_id"
+      }]
+    },
+    "orders5": {
+      "column_vindexes": [{
+        "column": "o_w_id",
+        "name": "w_id"
+      }]
+    },
+    "orders6": {
+      "column_vindexes": [{
+        "column": "o_w_id",
+        "name": "w_id"
+      }]
+    },
+    "orders7": {
+      "column_vindexes": [{
+        "column": "o_w_id",
+        "name": "w_id"
+      }]
+    },
+    "orders8": {
+      "column_vindexes": [{
+        "column": "o_w_id",
+        "name": "w_id"
+      }]
+    },
+    "orders9": {
+      "column_vindexes": [{
+        "column": "o_w_id",
+        "name": "w_id"
+      }]
+    },
+    "orders10": {
+      "column_vindexes": [{
+        "column": "o_w_id",
+        "name": "w_id"
+      }]
+    },
+    "stock1": {
+      "column_vindexes": [{
+        "column": "s_w_id",
+        "name": "w_id"
+      }]
+    },
+    "stock2": {
+      "column_vindexes": [{
+        "column": "s_w_id",
+        "name": "w_id"
+      }]
+    },
+    "stock3": {
+      "column_vindexes": [{
+        "column": "s_w_id",
+        "name": "w_id"
+      }]
+    },
+    "stock4": {
+      "column_vindexes": [{
+        "column": "s_w_id",
+        "name": "w_id"
+      }]
+    },
+    "stock5": {
+      "column_vindexes": [{
+        "column": "s_w_id",
+        "name": "w_id"
+      }]
+    },
+    "stock6": {
+      "column_vindexes": [{
+        "column": "s_w_id",
+        "name": "w_id"
+      }]
+    },
+    "stock7": {
+      "column_vindexes": [{
+        "column": "s_w_id",
+        "name": "w_id"
+      }]
+    },
+    "stock8": {
+      "column_vindexes": [{
+        "column": "s_w_id",
+        "name": "w_id"
+      }]
+    },
+    "stock9": {
+      "column_vindexes": [{
+        "column": "s_w_id",
+        "name": "w_id"
+      }]
+    },
+    "stock10": {
+      "column_vindexes": [{
+        "column": "s_w_id",
+        "name": "w_id"
+      }]
+    },
+    "warehouse1": {
+      "column_vindexes": [{
+        "column": "w_id",
+        "name": "w_id"
+      }]
+    },
+    "warehouse2": {
+      "column_vindexes": [{
+        "column": "w_id",
+        "name": "w_id"
+      }]
+    },
+    "warehouse3": {
+      "column_vindexes": [{
+        "column": "w_id",
+        "name": "w_id"
+      }]
+    },
+    "warehouse4": {
+      "column_vindexes": [{
+        "column": "w_id",
+        "name": "w_id"
+      }]
+    },
+    "warehouse5": {
+      "column_vindexes": [{
+        "column": "w_id",
+        "name": "w_id"
+      }]
+    },
+    "warehouse6": {
+      "column_vindexes": [{
+        "column": "w_id",
+        "name": "w_id"
+      }]
+    },
+    "warehouse7": {
+      "column_vindexes": [{
+        "column": "w_id",
+        "name": "w_id"
+      }]
+    },
+    "warehouse8": {
+      "column_vindexes": [{
+        "column": "w_id",
+        "name": "w_id"
+      }]
+    },
+    "warehouse9": {
+      "column_vindexes": [{
+        "column": "w_id",
+        "name": "w_id"
+      }]
+    },
+    "warehouse10": {
+      "column_vindexes": [{
+        "column": "w_id",
+        "name": "w_id"
+      }]
+    }
+  }
+}
